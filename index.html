@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Swiper Demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="/src/style.css" />
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400..900;1,400..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header id="main-header" class="py-8 md:py-9 lg:py-11 xl:py-[54px] w-full fixed top-0 z-50 bg-transparent">
+    <div class="flex justify-between items-center max-w-[1920px] mx-auto px-5 md:!px-[40px] lg:!px-[60px] xl:!px-20">
+      <div>
+        <img id="logo" src="logo-light.png" alt="Logo" class="w-[150px]" />
+      </div>
+      <div>
+        <button id="menu-btn" class="text-4xl cursor-pointer">&#9776;</button>
+        <button id="close-menu" class="text-6xl cursor-pointer text-black hidden">&times;</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Fullscreen Menu -->
+  <div id="fullscreen-menu"
+    class="fixed top-0 mt-[60px] max-h-[calc(100vh-60px)] lg:mt-[148px] lg:max-h-[calc(100vh-148px)] xl:mt-[168px] xl:max-h-[calc(100vh-168px)] left-0 w-full h-full bg-[#EFEAE4] z-40 transform -translate-x-full transition-transform duration-500 ease-in-out overflow-auto">
+
+    <div
+      class="flex flex-col lg:flex-row w-full h-full text-black font-[Alegreya] py-24 px-5 md:!px-[40px] lg:!px-[60px] xl:!px-20">
+
+      <!-- Menu Items -->
+      <ul class="w-full md:w-1/3 flex flex-col lg:justify-center lg:items-center space-y-4 z-10">
+        <li id="menu-item" class="menu-item" data-img="img1">Lodges and Hotels</li>
+        <li id="menu-item" class="menu-item" data-img="img2">Residences</li>
+        <li id="menu-item" class="menu-item" data-img="img3">Journeys</li>
+        <li id="menu-item" class="menu-item" data-img="img4">Experiences</li>
+        <li id="menu-item" class="menu-item" data-img="img4">Impact</li>
+      </ul>
+
+      <!-- Image Container -->
+      <div class="w-full md:w-1/3 relative h-1/3 md:h-full overflow-hidden hidden lg:flex items-center justify-center">
+        <div class="absolute top-0 left-1/2 transform -translate-x-1/2 h-full w-[2px] bg-gray-300"></div>
+
+        <div class="relative hidden lg:block w-2/3 aspect-[2/3]">
+          <img id="img1" src="https://picsum.photos/id/1011/800/600"
+            class="menu-image absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500" />
+          <img id="img2" src="https://picsum.photos/id/1012/800/600"
+            class="menu-image absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500" />
+          <img id="img3" src="https://picsum.photos/id/1013/800/600"
+            class="menu-image absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500" />
+          <img id="img4" src="https://picsum.photos/id/1015/800/600"
+            class="menu-image absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500" />
+          <img id="img5" src="https://picsum.photos/id/1016/800/600"
+            class="menu-image absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-500" />
+        </div>
+      </div>
+
+      <!-- Other Menu Links -->
+      <div class="w-full md:w-1/3 flex flex-col justify-center items-start lg:p-8 space-y-4">
+        <button class="other-menu-item">Our Story</button>
+        <button class="other-menu-item">Rates</button>
+        <button class="other-menu-item">Travel Partners</button>
+        <button class="other-menu-item">Blog</button>
+        <button class="other-menu-item">Gallery</button>
+        <button class="other-menu-item">Contact Us</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Parallax Section -->
+  <div class="bg-gray-100 flex items-center justify-center relative">
+    <div class="relative w-full h-screen overflow-hidden">
+      <img id="parallax-img"
+        src="https://plus.unsplash.com/premium_photo-1675827055620-24d540e0892a?auto=format&fit=crop&q=80&w=1944"
+        class="w-full h-full object-cover" />
+    </div>
+    <div class="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(0,0,0,0.35),transparent_43%,rgba(0,0,0,0.45))]">
+    </div>
+    <div class="absolute left-5 md:!left-[40px] lg:!left-[60px] xl:!left-[80px] bottom-[10%]">
+      <span id="fade-text"
+        class="font-[400] text-white font-[Alegreya] text-[4vw] md:text-[3vw] leading-[4vw] md:leading-[3.5vw]">
+        Welcome to <i>Daunara</i> Your <br /> Home Away from Home in <br /> the <i>Okavango</i> Delta
+      </span>
+    </div>
+  </div>
+
+  <!-- Swiper Section -->
+  <div
+    class="pt-[50px] md:pt-[70px] lg:pt-[90px] pb-12 pl-0 md:!pl-[40px] lg:!pl-[60px] xl:!pl-20 max-w-[1920px] mx-auto">
+    <h4
+      class="text-[#262633] [@media(max-width:768px)]:pl-5 text-4xl lg:text-[50px] font-[400] font-[Alegreya] pb-[50px]">
+      Experiences
+    </h4>
+
+    <div class="swiper mySwiper relative">
+      <div class="swiper-wrapper">
+
+        <!-- Slide 1 -->
+        <div class="swiper-slide relative">
+          <img
+            src="https://images.unsplash.com/photo-1751899597829-6652f018a9a0?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170"
+            alt="Slide 1" />
+          <div class="absolute left-0 bottom-0 text-left font-light">
+            <p class="content line-clamp-3">
+              SExcepteur efficient emerging, minim veniam anim aute carefully curated Ginza conversation
+              exquisite perfect nostrud nisi intricate Content.
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="swiper-slide relative">
+          <img
+            src="https://images.unsplash.com/photo-1523712999610-f77fbcfc3843?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170"
+            alt="Slide 2" />
+          <div class="absolute left-0 bottom-0 text-left font-light">
+            <p class="content">
+              SExcepteur efficient emerging, minim veniam anim aute carefully curated Ginza conversation
+              exquisite perfect nostrud nisi intricate Content.
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="swiper-slide relative">
+          <img
+            src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2071"
+            alt="Slide 3" />
+          <div class="absolute left-0 bottom-0 text-left font-light">
+            <p class="content">
+              SExcepteur efficient emerging, minim veniam anim aute carefully curated Ginza conversation
+              exquisite perfect nostrud nisi intricate Content.
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 4 -->
+        <div class="swiper-slide relative">
+          <img
+            src="https://images.unsplash.com/photo-1539634262233-7c0b48ab9503?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2025"
+            alt="Slide 4" />
+          <div class="absolute left-0 bottom-0 text-left font-light">
+            <p class="content">
+              SExcepteur efficient emerging, minim veniam anim aute carefully curated Ginza conversation
+              exquisite perfect nostrud nisi intricate Content.
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 5 -->
+        <div class="swiper-slide relative">
+          <img
+            src="https://images.unsplash.com/photo-1470240731273-7821a6eeb6bd?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170"
+            alt="Slide 5" />
+          <div class="absolute left-0 bottom-0 text-left font-light">
+            <p class="content">
+              SExcepteur efficient emerging, minim veniam anim aute carefully curated Ginza conversation
+              exquisite perfect nostrud nisi intricate Content.
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 6 -->
+        <div class="swiper-slide relative">
+          <img
+            src="https://plus.unsplash.com/premium_photo-1673697239984-b089baf7b6e6?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1170"
+            alt="Slide 6" />
+          <div class="absolute left-0 bottom-0 text-left font-light">
+            <p class="content">
+              SExcepteur efficient emerging, minim veniam anim aute carefully curated Ginza conversation
+              exquisite perfect nostrud nisi intricate Content.
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 7 -->
+        <div class="swiper-slide relative">
+          <img
+            src="https://images.unsplash.com/photo-1447752875215-b2761acb3c5d?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2070"
+            alt="Slide 7" />
+          <div class="absolute left-0 bottom-0 text-left font-light">
+            <p class="content">
+              SExcepteur efficient emerging, minim veniam anim aute carefully curated Ginza conversation
+              exquisite perfect nostrud nisi intricate Content.
+            </p>
+          </div>
+        </div>
+
+        <!-- Slide 8 -->
+        <div class="swiper-slide relative">
+          <img
+            src="https://images.unsplash.com/photo-1475776408506-9a5371e7a068?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=1058"
+            alt="Slide 8" />
+          <div class="absolute left-0 bottom-0 text-left font-light">
+            <p class="content">
+              SExcepteur efficient emerging, minim veniam anim aute carefully curated Ginza conversation
+              exquisite perfect nostrud nisi intricate Content.
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Navigation Buttons -->
+      <div class="next-slide absolute right-[5%] sm:right-[7%] top-[50%] -translate-y-[50%] z-10 cursor-pointer">
+        <img src="/navigation.png" width="34" height="34" />
+      </div>
+      <div class="prev-slide absolute left-[5%] top-[50%] sm:hidden -translate-y-[50%] z-10 cursor-pointer rotate-180">
+        <img src="/navigation.png" width="34" height="34" />
+      </div>
+
+      <!-- Pagination -->
+      <div class="swiper-pagination"></div>
+    </div>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="/src/main.js"></script>
+</body>
+
+</html>

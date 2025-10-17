@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+html,
+body {
+    @apply h-full font-sans text-white relative mx-auto bg-[#EFEAE4];
+}
+
+.swiper {
+    @apply w-full overflow-hidden h-[513px] box-border pb-11;
+}
+
+.swiper-wrapper {
+    @apply flex transition-all duration-400 ease-in-out;
+}
+
+
+.swiper-slide {
+    @apply text-center bg-[#444] flex justify-center items-center transition-all duration-400 ease-in-out w-[120px] xl:w-[200px] flex-shrink-0;
+}
+
+.swiper-slide-active {
+    @apply !w-full sm:!w-[600px] lg:!w-[700px] 2xl:!w-[800px];
+}
+
+.swiper-slide img {
+    @apply block w-full h-full object-cover;
+}
+
+.content {
+    @apply opacity-0 p-9 font-light text-[20px];
+}
+
+.swiper-slide.swiper-slide-active .content {
+    @apply opacity-100 transition-opacity duration-300 ease-in-out delay-300;
+}
+
+.swiper-pagination {
+    @apply bottom-0 !top-auto absolute w-full ml-0 md:!ml-[40px] lg:!ml-[60px] xl:!ml-[80px] 2xl:!ml-[60px]
+}
+
+.menu-item {
+    @apply text-3xl  md:text-4xl font-bold cursor-pointer transition-all duration-300 mb-0 pb-6
+}
+
+.other-menu-item {
+    @apply pb-6  m-0 cursor-pointer text-[30px] font-['Open_Sans'] font-[400];
+}
+
+.swiper-pagination {
+    @apply !h-1 !bottom-0 !ml-0;
+}
+
+.swiper-pagination-progressbar-fill {
+    @apply !bg-[#80715c] rounded-[4px];
+}
+
+.swiper-pagination-progressbar {
+    @apply !bg-[#e0d7cd] rounded-[4px];
+}
+
